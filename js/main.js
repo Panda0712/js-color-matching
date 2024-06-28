@@ -24,7 +24,8 @@ function handleLiElementClick(ulElementList, colorBackgroundElement, selections)
   ulElementList.addEventListener('click', (e) => {
     const liElement = e.target.closest('li');
     if (liElement) {
-      liElement.classList.toggle('active');
+      liElement.classList.add('active');
+      liElement.style.pointerEvents = 'none';
       const backColor = getComputedStyle(liElement.querySelector('.overlay')).backgroundColor;
       selections.push({ element: liElement, color: backColor });
       if (selections.length === 2) {

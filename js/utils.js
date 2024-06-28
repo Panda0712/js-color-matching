@@ -5,6 +5,12 @@ export function checkWin(colorElementList) {
   return listLength.length === colorElementList.length;
 }
 
+export function disableAllLiElementWhenLose(colorElementList) {
+  colorElementList.forEach((liElement) => {
+    liElement.style.pointerEvents = 'none';
+  });
+}
+
 export function setTimer(timerElement, playAgainButton, colorElementList) {
   let time = GAME_TIME;
   const timeInterval = setInterval(() => {
@@ -12,6 +18,7 @@ export function setTimer(timerElement, playAgainButton, colorElementList) {
       clearInterval(timeInterval);
       timerElement.innerText = 'GAME OVER 😭😭😭';
       playAgainButton.style.display = 'block';
+      disableAllLiElementWhenLose(colorElementList);
       return;
     }
     if (checkWin(colorElementList)) {
@@ -52,6 +59,8 @@ export function highlightMatchingLi(colorElementList, firstColor) {
 export function disableHighlightLi(firstSelection, secondSelection) {
   if (firstSelection && secondSelection) {
     firstSelection.element.classList.remove('active');
+    firstSelection.element.style.pointerEvents = 'visible';
     secondSelection.element.classList.remove('active');
+    secondSelection.element.style.pointerEvents = 'visible';
   }
 }
