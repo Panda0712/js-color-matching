@@ -11,4 +11,4 @@ export const randomColorSelection = [
   { luminosity: 'dark', count: 8 },
 ];
 
-export const GAME_TIME = 60;
+export const GAME_TIME = 30;
